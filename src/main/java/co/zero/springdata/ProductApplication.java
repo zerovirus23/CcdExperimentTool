@@ -57,10 +57,10 @@ public class ProductApplication {
 	}
 	
 	/**
-	 * 
-	 * @param supplier
-	 * @param category
-	 * @return
+	 * Builds a {@link Product} with random information
+	 * @param supplier The {@link Supplier} of the product in the market
+	 * @param category The {@link Category} of the product in the market
+	 * @return {@link Product} pojo with required information
 	 */
 	public static Product buildProduct(Supplier supplier, Category category){
 		Product product = new Product();
@@ -105,10 +105,10 @@ public class ProductApplication {
 	}
 	
 	/**
-	 * 
-	 * @param numEntities
-	 * @param categoryDao
-	 * @return
+	 * Builds a list of {@link Category}
+	 * @param numEntities Amount of {@link Category} required
+	 * @param categoryDao Service to access DataBase
+	 * @return List of categories created
 	 */
 	public static List<Category> buildCategories(int numEntities, CategoryDao categoryDao){
 		List<Category> entities = new ArrayList<Category>();
@@ -125,10 +125,10 @@ public class ProductApplication {
 	}
 	
 	/**
-	 * 
-	 * @param numEntities
-	 * @param supplierDao
-	 * @return
+	 * Builds a list of {@link Supplier}
+	 * @param numEntities Amount of {@link Supplier} required
+	 * @param supplierDao Service to access DataBase
+	 * @return List of suppliers created
 	 */
 	public static List<Supplier> buildSuppliers(int numEntities, SupplierDao supplierDao){
 		List<Supplier> entities = new ArrayList<Supplier>();
@@ -152,9 +152,16 @@ public class ProductApplication {
 	 * @param category
 	 * @return
 	 */
-	public static List<Product> buildProducts(int numEntities, 
+	/**
+	 * Builds a list of {@link Product}
+	 * @param numEntities Amount of {@link Product} required
+	 * @param productDao Service to access DataBase
+	 * @param categories available {@link Category} already persisted
+	 * @param suppliers available {@link Supplier} already persisted
+	 * @return List of suppliers created
+	 */
+	public static void buildProducts(int numEntities, 
 			ProductDao productDao, List<Category> categories, List<Supplier> suppliers){
-		List<Product> entities = new ArrayList<Product>();
 		Product product;
 		
 		for(int i=0; i < numEntities; i++){
@@ -163,14 +170,11 @@ public class ProductApplication {
 			product = ProductApplication.buildProduct(supplier, category);
 			product = productDao.save(product);
 			System.out.println(product.toString());
-//			entities.add(product);
 		}
-		
-		return entities;
 	}
 	
 	/**
-	 * 
+	 * Default entry point to the {@link ProductApplication} tools
 	 * @param args
 	 */
 	public static void main(String[] args) {
