@@ -1,5 +1,5 @@
 //=======================================================================
-// ARCHIVO ProductController.java
+// ARCHIVO SupplierController.java
 // FECHA CREACIÓN: Jun 29, 2015
 //=======================================================================
 package co.zero.ccd.web.controller;
@@ -13,46 +13,46 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import co.zero.ccd.data.ProductDao;
-import co.zero.ccd.model.Product;
+import co.zero.ccd.data.SupplierDao;
+import co.zero.ccd.model.Supplier;
 
 /**
- * Controller that handle the request related with {@link Product} items
+ * Controller that handle the request related with {@link Supplier} items
  * @author Hernán Tenjo
  * @version 1.0
  */
 @Controller
-public class ProductController {
-	private final Logger logger = LoggerFactory.getLogger(ProductController.class);
-	private final ProductDao productDao;
+public class SupplierController {
+	private final Logger logger = LoggerFactory.getLogger(SupplierController.class);
+	private final SupplierDao supplierDao;
 	
 	/**
-	 * Constructor with the ProductDao as a parameter 
-	 * @param productDao Service to access data
+	 * Constructor with the ProductDao as a 
+	 * @param productDao
 	 */
 	@Autowired
-	public ProductController(ProductDao productDao) {
+	public SupplierController(SupplierDao supplierDao) {
 		super();
-		this.productDao = productDao;
+		this.supplierDao = supplierDao;
 	}
 
 
 
 	/**
-	 * Method that search for products with the given name
+	 * Method that search for suppliers with the given name
 	 * @param name
 	 * @return
 	 */
-	@RequestMapping(value="/searchProduct")
+	@RequestMapping(value="/searchSupplier")
 	public String searchByName(@RequestParam(value="name", required=false, defaultValue="")
 		String name, Model model){
 		
 		if(StringUtils.isNotBlank(name)){
-			logger.info("Searching products...");
-			model.addAttribute("products", productDao.findByNameContainingIgnoreCase(name));
+			logger.info("Searching suppliers...");
+			model.addAttribute("suppliers", supplierDao.findByNameContainingIgnoreCase(name));
 		}
 		
-		return "searchProduct";
+		return "searchSupplier";
 	}
 }
 

@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -6,10 +7,15 @@
 <title>CCD Search Product</title>
 </head>
 <body>
-	<p><a href="searchProduct">Search Products</a></p>
-	<p><a href="searchSupplier">Search Suppliers</a></p>
-	<p><a href="loadSuppliers">Load Suppliers</a></p>
-	<p><a href="loadCategories">Load Categories</a></p>
-	<p><a href="loadProducts">Load Products</a></p>
+<form action="">
+	Search Product: 
+	<input type="text" name="name" value="${name}"/>
+	<input type="submit" value="Buscar">
+</form>
+
+<c:forEach items="${products}" var="product">
+	${product.id} - ${product.name}
+</c:forEach>
+
 </body>
 </html>

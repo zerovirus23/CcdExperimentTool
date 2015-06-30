@@ -23,7 +23,7 @@
             <value>postgres</value>
         </property>
         <property name="password">
-            <value>postgres</value>
+            <value>000000</value>
         </property>
     </bean>
   

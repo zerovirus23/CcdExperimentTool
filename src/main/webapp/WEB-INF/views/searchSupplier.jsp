@@ -6,10 +6,6 @@
 <title>CCD Search Product</title>
 </head>
 <body>
-	<p><a href="searchProduct">Search Products</a></p>
-	<p><a href="searchSupplier">Search Suppliers</a></p>
-	<p><a href="loadSuppliers">Load Suppliers</a></p>
-	<p><a href="loadCategories">Load Categories</a></p>
-	<p><a href="loadProducts">Load Products</a></p>
+This page is not ready! Please use search Product! 
 </body>
 </html>

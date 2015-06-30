@@ -26,7 +26,7 @@ import co.zero.ccd.model.Supplier;
  * @version 1.0
  */
 public class ProductApplication {
-	private static final int MAX_ROWS = 10000000;
+	private static final int MAX_ROWS = 1000000;
 	
 	/**
 	 * Builds a product {@link Category} with random information 
@@ -179,7 +179,7 @@ public class ProductApplication {
 		SupplierDao supplierDao = context.getBean(SupplierDao.class);
 		CategoryDao categoryDao = context.getBean(CategoryDao.class);
 		
-		List<Category> categories = buildCategories(10, categoryDao);
+		List<Category> categories = buildCategories(100, categoryDao);
 		List<Supplier> suppliers = buildSuppliers(100, supplierDao);
 		buildProducts(MAX_ROWS, productDao, categories, suppliers);
 	}
@@ -205,7 +205,7 @@ public class ProductApplication {
 	 */
 	public static void main(String[] args) {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-//		buildAllEntities(productDao, supplierDao, categoryDao);
+		buildAllEntities(context);
 		testFindProduct(context);
 		context.close();
 	}
