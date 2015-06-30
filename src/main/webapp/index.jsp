@@ -7,5 +7,6 @@
 </head>
 <body>
 Search: <input type="text" name="q" value=""/>
+prueba
 </body>
 </html>
