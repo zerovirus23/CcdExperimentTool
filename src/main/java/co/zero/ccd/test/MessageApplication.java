@@ -2,7 +2,7 @@
 // ARCHIVO Application.java
 // FECHA CREACIÓN: Jun 28, 2015
 //=======================================================================
-package co.zero.springtest;
+package co.zero.ccd.test;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -11,8 +11,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * Descripción de la clase
- * 
+ * Entry point for testing Apps
  * @author Hernán Tenjo
  * @version 1.0
  */
@@ -20,8 +19,8 @@ import org.springframework.context.annotation.Configuration;
 @ComponentScan
 public class MessageApplication {
 	/**
-	 * 
-	 * @return
+	 * Instanciate the abstract service 
+	 * @return The concrete service
 	 */
 	@Bean
 	public MessageService mockMessageService() {
@@ -33,7 +32,7 @@ public class MessageApplication {
 	}
 
 	/**
-	 * 
+	 * Main method entry point to test applications
 	 * @param args
 	 */
 	public static void main(String[] args) {

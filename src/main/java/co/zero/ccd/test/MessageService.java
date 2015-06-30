@@ -2,10 +2,10 @@
 // ARCHIVO MessageService.java
 // FECHA CREACIÓN: Jun 28, 2015
 //=======================================================================
-package co.zero.springtest;
+package co.zero.ccd.test;
 
 /**
- * Descripción de la clase
+ * Interface that expose a method for testing purposes
  * @author Hernán Tenjo
  * @version 1.0
  */

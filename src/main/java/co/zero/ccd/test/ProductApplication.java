@@ -2,7 +2,7 @@
 // ARCHIVO ProductApplication.java
 // FECHA CREACIÓN: Jun 29, 2015
 //=======================================================================
-package co.zero.springdata;
+package co.zero.ccd.test;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -12,9 +12,12 @@ import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.RandomUtils;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import co.zero.model.Category;
-import co.zero.model.Product;
-import co.zero.model.Supplier;
+import co.zero.ccd.data.CategoryDao;
+import co.zero.ccd.data.ProductDao;
+import co.zero.ccd.data.SupplierDao;
+import co.zero.ccd.model.Category;
+import co.zero.ccd.model.Product;
+import co.zero.ccd.model.Supplier;
 
 /**
  * This class is a tool for population purpose to give the right
@@ -145,14 +148,6 @@ public class ProductApplication {
 	}
 	
 	/**
-	 * 
-	 * @param numEntities
-	 * @param productDao
-	 * @param supplier
-	 * @param category
-	 * @return
-	 */
-	/**
 	 * Builds a list of {@link Product}
 	 * @param numEntities Amount of {@link Product} required
 	 * @param productDao Service to access DataBase
@@ -174,11 +169,12 @@ public class ProductApplication {
 	}
 	
 	/**
-	 * Default entry point to the {@link ProductApplication} tools
-	 * @param args
+	 * Build all required list
+	 * @param productDao
+	 * @param supplierDao
+	 * @param categoryDao
 	 */
-	public static void main(String[] args) {
-		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+	public static void buildAllEntities(ClassPathXmlApplicationContext context){
 		ProductDao productDao = context.getBean(ProductDao.class);
 		SupplierDao supplierDao = context.getBean(SupplierDao.class);
 		CategoryDao categoryDao = context.getBean(CategoryDao.class);
@@ -186,7 +182,33 @@ public class ProductApplication {
 		List<Category> categories = buildCategories(10, categoryDao);
 		List<Supplier> suppliers = buildSuppliers(100, supplierDao);
 		buildProducts(MAX_ROWS, productDao, categories, suppliers);
+	}
+	
+	/**
+	 * 
+	 * @param context
+	 */
+	public static void testFindProduct(ClassPathXmlApplicationContext context){
+		ProductDao productDao = context.getBean(ProductDao.class);
+		String productName = "casa";
+		List<Product> products = productDao.findByNameContainingIgnoreCase(productName);
+		
+		if(products.size() > 0 ){
+			System.out.println("Amount of products with name like " + productName);
+			System.out.println("ProductId = " + products.get(0).getId());
+		}
+	}
+	
+	/**
+	 * Default entry point to the {@link ProductApplication} tools
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+//		buildAllEntities(productDao, supplierDao, categoryDao);
+		testFindProduct(context);
 		context.close();
 	}
+	
+	
 }
-

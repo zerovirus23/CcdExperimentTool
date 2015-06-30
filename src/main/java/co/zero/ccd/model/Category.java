@@ -2,14 +2,14 @@
 // ARCHIVO Category.java
 // FECHA CREACIÓN: Jun 29, 2015
 //=======================================================================
-package co.zero.model;
+package co.zero.ccd.model;
 
 import javax.persistence.Entity;
 
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 /**
- * Descripción de la clase
+ * A group of products
  * @author Hernán Tenjo
  * @version 1.0
  */

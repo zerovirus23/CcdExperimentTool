@@ -2,26 +2,28 @@
 // ARCHIVO Product.java
 // FECHA CREACIÓN: Jun 29, 2015
 //=======================================================================
-package co.zero.model;
+package co.zero.ccd.model;
 
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 /**
- * Descripción de la clase
+ * The object that is sold by a supplier
  * @author Hernán Tenjo
  * @version 1.0
  */
 @Entity
 public class Product extends AbstractPersistable<Long>{
 	private static final long serialVersionUID = 1L;
-
+	@ManyToOne(optional=false)
 	private Category category;
+	@ManyToOne(optional=false)
 	private Supplier supplier;
 	private String name;
 	private String description;
