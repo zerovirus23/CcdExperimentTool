@@ -4,6 +4,8 @@
 //=======================================================================
 package co.zero.ccd.web.controller;
 
+import java.util.List;
+
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -46,10 +48,12 @@ public class ProductController {
 	@RequestMapping(value="/searchProduct")
 	public String searchByName(@RequestParam(value="name", required=false, defaultValue="")
 		String name, Model model){
+		logger.info("Searching products...");
 		
 		if(StringUtils.isNotBlank(name)){
-			logger.info("Searching products...");
-			model.addAttribute("products", productDao.findByNameContainingIgnoreCase(name));
+			List<Product> products = productDao.findByNameContainingIgnoreCase(name);
+			logger.info("Products found..." + products.size());
+			model.addAttribute("products", products);
 		}
 		
 		return "searchProduct";

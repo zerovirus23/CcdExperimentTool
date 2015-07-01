@@ -6,6 +6,7 @@ package co.zero.ccd.data;
 
 import java.util.List;
 
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -23,5 +24,6 @@ public interface ProductDao extends CrudRepository<Product, Long> {
 	 * @param name String to filter products by name
 	 * @return List of products with a name containing the parameter name
 	 */
+	@Cacheable(value="productFindCache", key="#p0")
 	List<Product> findByNameContainingIgnoreCase(String name);
 }
