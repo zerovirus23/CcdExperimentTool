@@ -83,6 +83,12 @@
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
+		
+		<dependency>
+	        <groupId>org.springframework.data</groupId>
+	        <artifactId>spring-data-solr</artifactId>
+	        <version>1.4.1.RELEASE</version>
+	    </dependency>
 
 	</dependencies>
 </project>
