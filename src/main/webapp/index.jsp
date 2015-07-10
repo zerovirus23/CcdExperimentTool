@@ -6,6 +6,7 @@
 <title>CCD Search Product</title>
 </head>
 <body>
+	<p><a href="chainProduct?product=10">Chain Products</a></p>
 	<p><a href="searchProduct">Search Products</a></p>
 	<p><a href="searchSupplier">Search Suppliers</a></p>
 	<p><a href="loadSuppliers">Load Suppliers</a></p>
